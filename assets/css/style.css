@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Times New Roman", Times, serif;
+}
+
+
+main {
+  position: relative;
+}
+
+#myCanvasEarth {
+  position: absolute;
+}
+
+#myCanvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
