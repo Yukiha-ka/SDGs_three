@@ -35,9 +35,11 @@ function init() {
   // カメラコントローラーを作成
   const controls = new THREE.OrbitControls(camera, canvasElement);
   
-    // ?ズーム制御が効かない
-  controls.userZoom = false;
-  controls.userZoomSpeed = 0.1;
+  // ズーム制御
+  controls.enableZoom = false
+
+  // パン制御
+  controls.enablePan = false
 
   // 滑らかにカメラコントローラーを制御
   controls.enableDamping = true;
