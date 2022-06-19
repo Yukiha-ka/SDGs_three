@@ -2,15 +2,6 @@
 const width = window.innerWidth;
 const height = window.innerHeight;
 
-// ? windowのサイズが変更されたとき
-window.addEventListener('resize', resizeWindow);
-
-function resizeWindow() {
-  // ? サイズをwindowに合わせる(出来ない。。。)
-  renderer.setSize(width, height);
-}
-
-
 // ページの読み込みを待つ
 window.addEventListener('DOMContentLoaded', init);
 
@@ -70,5 +61,14 @@ function init() {
     renderer.render(scene, camera);
 
     requestAnimationFrame(tick);
+  }
+
+  window.addEventListener("resize", onWindowResize);
+
+  /* ウィンドウ変更時にサイズを維持する処理 */
+  function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
   }
 }
