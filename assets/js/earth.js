@@ -25,15 +25,26 @@ function init() {
 
   // カメラコントローラーを作成
   const controls = new THREE.OrbitControls(camera, canvasElement);
+  
+  // ズーム制御
+  controls.enableZoom = false
+
+  // パン制御
+  controls.enablePan = false
 
   // 滑らかにカメラコントローラーを制御
   controls.enableDamping = true;
   controls.dampingFactor = 0.02;
 
   // // 平行光源を作成
-  var directionalLight = new THREE.DirectionalLight(0xFFFFFF, 1.0); // 光源色と光強度を指定して生成
+  var directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.01); // 光源色と光強度を指定して生成
   directionalLight.position.set(20, 20, 100); // 光源位置を設定
   scene.add(directionalLight); // シーンに追加
+  
+  
+  // 環境光源を作成（影の応急処置）
+  var ambientLight = new THREE.AmbientLight(0xFFFFFF, 1.5); // 光源色を指定して生成
+  scene.add(ambientLight); // シーンに追加
 
   // マテリアルを作成
   const material = new THREE.MeshStandardMaterial({
